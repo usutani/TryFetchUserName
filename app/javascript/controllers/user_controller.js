@@ -5,7 +5,10 @@ export default class extends Controller {
   static targets = [ "id", "output" ]
 
   fetch() {
-    fetch(`users/${encodeURIComponent(this.idTarget.value)}.json`)
+    const userId = encodeURIComponent(this.idTarget.value)
+    // const url = `https://jsonplaceholder.typicode.com/users/${userId}`
+    const url = `users/${userId}.json`
+    fetch(url)
     .then(response => {
       if (response.ok) {
         response.json().then(userInfo => {
