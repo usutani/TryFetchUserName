@@ -1,8 +1,20 @@
 import { Controller } from "@hotwired/stimulus"
+import _ from 'lodash';
 
 // Connects to data-controller="user"
 export default class extends Controller {
   static targets = [ "id", "output" ]
+
+  connect() {
+    // keyup ?
+    this.debouncedFetch = _.debounce(this.fetch, 1000)
+    this.idTarget.addEventListener('keyup', this.debouncedFetch.bind(this))
+  }
+
+  disconnect()
+  {
+    this.idTarget.removeEventListener('keyup', this.debouncedFetch.bind(this))
+  }
 
   fetch() {
     const userId = encodeURIComponent(this.idTarget.value)
