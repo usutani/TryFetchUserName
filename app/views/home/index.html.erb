@@ -1,9 +1,13 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
-<% 6.times do %>
-  <div>
-    <input>
-    <label>bbb</label>
+<% 5.times do %>
+  <div data-controller="user">
+    <input data-user-target="id" type="text">
+    <button data-action="click->user#fetch">
+      Fetch
+    </button>
+    <span data-user-target="output">
+    </span>
   </div>
 <% end %>
