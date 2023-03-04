@@ -26,6 +26,9 @@ export default class extends Controller {
         response.json().then(userInfo => {
           this.outputTarget.textContent = userInfo.name
         })
+      } else {
+        this.outputTarget.textContent = ''
+        alert('opps!')
       }
     })
   }
