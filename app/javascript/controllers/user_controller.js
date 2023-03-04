@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 // Connects to data-controller="user"
 export default class extends Controller {
-  static targets = [ "id", "output" ]
+  static targets = [ "id", "name" ]
 
   connect() {
     this.debouncedFetch = _.debounce(this.fetch, 1000)
@@ -23,10 +23,10 @@ export default class extends Controller {
     .then(response => {
       if (response.ok) {
         response.json().then(userInfo => {
-          this.outputTarget.textContent = userInfo.name
+          this.nameTarget.textContent = userInfo.name
         })
       } else {
-        this.outputTarget.textContent = ''
+        this.nameTarget.textContent = ''
         alert('opps!')
       }
     })
