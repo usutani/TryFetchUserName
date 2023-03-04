@@ -6,7 +6,6 @@ export default class extends Controller {
   static targets = [ "id", "output" ]
 
   connect() {
-    // keyup ?
     this.debouncedFetch = _.debounce(this.fetch, 1000)
     this.idTarget.addEventListener('keyup', this.debouncedFetch.bind(this))
   }
